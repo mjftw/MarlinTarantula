@@ -28,13 +28,13 @@
 
 ***********************************************************************/
 
-#define PRINTER_NAME "TEVO Tarantula (EasyConfig)"  // Change this to whatever you wish, or leave it as it is.
+#define PRINTER_NAME "Saxon"  // Change this to whatever you wish, or leave it as it is.
                                                     // NOTE: Whatever you put here will have " Ready..." appended to it.
 
 /**
  * Equipment options
  */
-//#define LARGE_BED
+#define LARGE_BED
 #define SDSUPPORT
 //#define CHANGE_Y_DIRECTION        // If your bed homes in the wrong direction (it should move front to back) enable this.
 //#define CHANGE_X_DIRECTION        // If your X carriage homes in the wrong direction (it should move right to left) enable this.
@@ -60,14 +60,14 @@
 /**
  * Minimal Z height (in mm) before homing (G28) for Z clearance above the bed, clamps, ...
  */
-#define Z_HOMING_HEIGHT 5
+#define Z_HOMING_HEIGHT 15
 
 /**
  * Primary Extruder steps per mm (plugged in to E0 port on controller)
  * (How to calibrate: https://toms3d.org/2014/04/06/3d-printing-guides-calibrating-your-extruder/)
  */
-#define E0_STEPS      100 // Stock extruder. If you have a Tevo Titan, try 400 then calibrate.
-//#define CHANGE_E0_DIRECTION   // If your extruder is going backwards, enable this.
+#define E0_STEPS      400 // Stock extruder. If you have a Tevo Titan, try 400 then calibrate.
+#define CHANGE_E0_DIRECTION   // If your extruder is going backwards, enable this.
 
 /**
  * Z Axis steps per mm (Default for stock lead screw is 1600)
@@ -79,7 +79,7 @@
  * Z-Probe type (must be none or one of them)
  * If a Z-Probe type is selected, a Bed Leveling type other than MANUAL must be selected.
  */
-//#define BLTOUCH         // ANTClabs BLTouch sensor (might also work with clones)
+#define BLTOUCH         // ANTClabs BLTouch sensor (might also work with clones)
 //#define SN04          // Green sensor
 //#define INDUCTIVE_NO  // Normally open inductive sensor
 //#define INDUCTIVE_NC  // Normally closed inductive sensor
@@ -90,21 +90,21 @@
  * Bed leveling type (see: https://github.com/JimBrown/MarlinTarantula/wiki/Bed-leveling-types-(EasyConfig))
  * Must choose one of these other than MANUAL if a Z-Probe type is selected.
  */
-//#define TRIPOINT
+#define TRIPOINT
 //#define LINEAR
 //#define BILINEAR
 //#define UBL
-#define MANUAL
+//#define MANUAL
 
 /**
  * Z-Probe offset from nozzle (https://github.com/JimBrown/MarlinTarantula/wiki/How-to-determine-your-Z-Probe-offset)
  * Use only one of Left/Right and Front/Behind. Others must be 0 (zero)
  * If you have a dual nozzle the offsets are calculated from the primary nozzle (the one plugged in to E0)
  */
-#define SENSOR_LEFT        0
+#define SENSOR_LEFT        9
 #define SENSOR_RIGHT       0
 #define SENSOR_FRONT       0
-#define SENSOR_BEHIND      0
+#define SENSOR_BEHIND      26
 
 /**
  * Number of grid points in each direction
@@ -115,7 +115,7 @@
 /**
  * Margin around perimiter of bed for probing (will not probe outside this margin)
  */
-#define BED_MARGIN         1
+#define BED_MARGIN         15
 
 /**
  * Servo probe deploy and stow angles
@@ -144,15 +144,15 @@
  * Secondary Extruder steps per mm
  * (how to calibrate: https://toms3d.org/2014/04/06/3d-printing-guides-calibrating-your-extruder/)
  */
-#define E1_STEPS      100 // Stock extruder. If you have a Tevo Titan, try 400 then calibrate
+#define E1_STEPS      400 // Stock extruder. If you have a Tevo Titan, try 400 then calibrate
 //#define CHANGE_E1_DIRECTION   // If your secondary extruder is going backwards, enable this.
 
 /**
  * TEVO Tarantula Custom PID Settings - Stock Hotend
  */
-#define  hot_Kp 9.84
-#define  hot_Ki 0.50
-#define  hot_Kd 48.17
+#define  hot_Kp 10.36
+#define  hot_Ki 0.77
+#define  hot_Kd 35.06
 // FIND YOUR OWN: "M303 E0 C8 S200" to run autotune on the hotend at 200 degreesC for 8 cycles.
 // More info here: http://reprap.org/wiki/PID_Tuning
 
@@ -197,7 +197,7 @@
  * Fan Soft PWM. Use software PWM to drive the fan, as for the heaters. This uses a very low frequency
  * which is not as annoying as with the hardware PWM. Redo PID Autotune.
  */
-//#define SOFT_PWM
+#define SOFT_PWM
 
 /**
  * Enable this to provide a realtime control over the head position via the LCD menu system that works while printing.
@@ -212,13 +212,13 @@
  * Set both to 0 (zero) if you do not have a Z-Probe.
  */
 #define XTRA_BED_LEFT     0  // Distance nozzle can move towards the left past X = 0
-#define XTRA_BED_RIGHT    0  // Distance nozzle can move towards the right past X = 200
+#define XTRA_BED_RIGHT    200  // Distance nozzle can move towards the right past X = 200
 
 /**
  * Extra movement of Y axis. Can help with probing more of the bed.
  * Set both to 0 (zero) if you do not have a Z-Probe.
  */
-#define XTRA_BED_FRONT    0  // Distance bed can move towards the front past Y = 200 (Y=280 for large bed)
+#define XTRA_BED_FRONT    280  // Distance bed can move towards the front past Y = 200 (Y=280 for large bed)
 #define XTRA_BED_BACK     0  // Distance bed can move towards the back past Y = 0
 
 /**
@@ -491,14 +491,14 @@
  *
  * :{ 0:'No power switch', 1:'ATX', 2:'X-Box 360' }
  */
-#define POWER_SUPPLY 0
+#define POWER_SUPPLY 1
 
 #if POWER_SUPPLY > 0
   // Enable this option to leave the PSU off at startup.
   // Power to steppers and heaters will need to be turned on with M80.
   //#define PS_DEFAULT_OFF
 
-  //#define AUTO_POWER_CONTROL        // Enable automatic control of the PS_ON pin
+  #define AUTO_POWER_CONTROL        // Enable automatic control of the PS_ON pin
   #if ENABLED(AUTO_POWER_CONTROL)
     #define AUTO_POWER_FANS           // Turn on PSU if fans need power
     #define AUTO_POWER_E_FANS
