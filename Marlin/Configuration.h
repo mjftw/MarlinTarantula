@@ -60,7 +60,7 @@
 /**
  * Minimal Z height (in mm) before homing (G28) for Z clearance above the bed, clamps, ...
  */
-#define Z_HOMING_HEIGHT 15
+#define Z_HOMING_HEIGHT 4
 
 /**
  * Primary Extruder steps per mm (plugged in to E0 port on controller)
@@ -115,7 +115,7 @@
 /**
  * Margin around perimiter of bed for probing (will not probe outside this margin)
  */
-#define BED_MARGIN         15
+#define BED_MARGIN         20
 
 /**
  * Servo probe deploy and stow angles
@@ -184,8 +184,8 @@
  *       CUSTOM_USER_MENUS for PETG to appear, along with PLA and ABS, under Custom Commands.
  *       PLA and ABS will appear under both Custom Command and Prepare.
  */
-#define Hot_PLA     215
-#define Bed_PLA      75
+#define Hot_PLA     190
+#define Bed_PLA     70
 
 #define Hot_ABS 		240
 #define Bed_ABS 		100
@@ -197,7 +197,7 @@
  * Fan Soft PWM. Use software PWM to drive the fan, as for the heaters. This uses a very low frequency
  * which is not as annoying as with the hardware PWM. Redo PID Autotune.
  */
-#define SOFT_PWM
+//#define SOFT_PWM
 
 /**
  * Enable this to provide a realtime control over the head position via the LCD menu system that works while printing.
@@ -1623,15 +1623,15 @@
 // Preheat Constants
 #define PREHEAT_1_TEMP_HOTEND   Hot_PLA // PLA
 #define PREHEAT_1_TEMP_BED      Bed_PLA
-#define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
+#define PREHEAT_1_FAN_SPEED     200 // Value from 0 to 255
 
 #define PREHEAT_2_TEMP_HOTEND   Hot_ABS  // ABS
 #define PREHEAT_2_TEMP_BED      Bed_ABS
-#define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
+#define PREHEAT_2_FAN_SPEED     200 // Value from 0 to 255
 
 #define PREHEAT_3_TEMP_HOTEND   Hot_PETG  // PETG
 #define PREHEAT_3_TEMP_BED      Bed_PETG
-#define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
+#define PREHEAT_3_FAN_SPEED     200 // Value from 0 to 255
 
 /**
  * Nozzle Park
@@ -1796,7 +1796,7 @@
  * you must uncomment the following option or it won't work.
  *
  */
-//#define SDSUPPORT
+#define SDSUPPORT
 
 /**
  * SD CARD: SPI SPEED
